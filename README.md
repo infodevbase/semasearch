@@ -1,1 +1,13 @@
-# semasearch
+# semasearch 
+```
+                                                                Data Start 14/01/2026
+                                                                Software Developer 
+                                                                Project for DevOps
+```
+
+Il progetto consiste in una piattaforma web per l'upload di documenti testuali, ricerca semantica con embedding vettoriali, gestione utenti e documenti e notifiche di sistema asincrone. 
+
+Il tutto deve essere sviluppato in microservizi usando un linguaggio a piacere del gruppoPostgreSQLcome DBMS, MongoDB peri documenti, e un DB Vettoriale con API REST, RabbitMQ oppure Kafka per il message broking, usare nel possibile tecnologie simili a HTMX.
+
+Tutto il progetto deve essere sviluppato secondo le regole della DevOps.
+Da sviluppare: Backend, DB Relazionale, DB NoSQL, DB Vettoriale, Message Queue, Frontend, Test e contenerizzazione.

@@ -1,0 +1,9 @@
+Flask
+Flask-Cors
+pymongo
+psycopg2-binary
+sentence-transformers
+torch
+scikit-learn
+celery
+redis

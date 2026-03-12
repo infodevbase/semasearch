@@ -1,0 +1,104 @@
+@startuml DatabaseSchema
+
+' Stile per le entità
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #FFD54F
+  ArrowColor #FF9800
+  AttributeFontSize 12
+}
+
+' Definizione delle entità
+entity users {
+  + user_id [PK]
+  --
+  username
+  email
+  password_hash
+  role
+  deleted
+  owners
+  created_at
+  updated_at
+  deleted_at
+}
+
+entity groups {
+  + group_id [PK]
+  --
+  group_owner [FK]
+  group_name
+}
+
+entity user_groups {
+  + user_id [PK, FK]
+  + group_id [PK, FK]
+}
+
+entity documents {
+  + document_id [PK]
+  --
+  user_id [FK]
+  title
+  content
+  file_name
+  upload_date
+  updated_at
+}
+
+entity shared_documents {
+  + share_id [PK]
+  --
+  document_id [FK]
+  owner_id [FK]
+  shared_with_id [FK]
+  shared_at
+}
+
+entity saved_searches {
+  + search_id [PK]
+  --
+  user_id [FK]
+  query
+  search_date
+}
+
+entity notifications {
+  + notification_id [PK]
+  --
+  user_id [FK]
+  type
+  message
+  is_read
+  created_at
+  metadata
+}
+
+entity action_logs {
+  + log_id [PK]
+  --
+  user_id [FK]
+  action_type
+  entity_type
+  entity_id
+  old_value
+  new_value
+  action_timestamp
+  ip_address
+  user_agent
+}
+
+' Relazioni
+users ||--o{ groups : "group_owner"
+users ||--o{ user_groups
+groups ||--o{ user_groups
+users ||--o{ documents
+users ||--o{ shared_documents : "owner"
+users ||--o{ shared_documents : "shared_with"
+users ||--o{ saved_searches
+users ||--o{ notifications
+users ||--o{ action_logs
+
+documents ||--o{ shared_documents
+
+@enduml
